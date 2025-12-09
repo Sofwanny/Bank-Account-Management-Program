@@ -1,0 +1,66 @@
+class BankAccount {
+  constructor() {
+    this.balance = 0;
+    this.transaction = []
+  }
+
+  deposit(amount) {
+    if (amount > 0) {
+      this.transaction.push({
+        type: "deposit",
+        amount: amount,
+      });
+
+        this.balance += amount;
+        return `Successfully deposited ${amount}. New balance: ${this.balance}`;
+    }
+
+    else if (amount <= 0) {
+      return "Deposit amount must be greater than zero.";
+    }
+ 
+  } 
+
+   withdraw(amount) {
+      if (amount > 0 && amount <= this.balance) {
+        this.transaction.push({
+          type: "withdraw",
+          amount: amount,
+        })
+
+       this.balance -= amount;
+       return `Successfully withdrew ${amount}. New balance: ${this.balance}`;
+
+      }
+
+       else if (amount <= 0 || amount > this.balance) {
+         return `Insufficient balance or invalid amount.`;
+       }
+    }
+
+checkBalance() {
+return `Current balance: ${this.balance}`;
+}
+
+listAllDeposits() {
+  const depo = []
+  this.transaction.forEach((deposits) => {
+    if (deposits.type === "deposit") {
+    depo.push(deposits.amount);
+    }
+  })
+  return `Deposits: ${depo.join(",")}`
+}
+
+listAllWithdrawals() {
+  const withdrawal = []
+  this.transaction.forEach((withdraws) => {
+    if (withdraws.type === "withdraw") {
+    withdrawal.push(withdraws.amount);
+    }
+  })
+  return `Withdrawals: ${withdrawal.join(",")}`
+}
+
+const myAccount = new BankAccount()
+}
