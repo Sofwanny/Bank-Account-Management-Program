@@ -1,12 +1,12 @@
 class BankAccount {
   constructor() {
     this.balance = 0;
-    this.transaction = []
+    this.transactions = []
   }
 
   deposit(amount) {
     if (amount > 0) {
-      this.transaction.push({
+      this.transactions.push({
         type: "deposit",
         amount: amount,
       });
@@ -23,7 +23,7 @@ class BankAccount {
 
    withdraw(amount) {
       if (amount > 0 && amount <= this.balance) {
-        this.transaction.push({
+        this.transactions.push({
           type: "withdraw",
           amount: amount,
         })
@@ -44,7 +44,7 @@ return `Current balance: ${this.balance}`;
 
 listAllDeposits() {
   const depo = []
-  this.transaction.forEach((deposits) => {
+  this.transactions.forEach((deposits) => {
     if (deposits.type === "deposit") {
     depo.push(deposits.amount);
     }
@@ -54,7 +54,7 @@ listAllDeposits() {
 
 listAllWithdrawals() {
   const withdrawal = []
-  this.transaction.forEach((withdraws) => {
+  this.transactions.forEach((withdraws) => {
     if (withdraws.type === "withdraw") {
     withdrawal.push(withdraws.amount);
     }
