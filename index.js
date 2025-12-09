@@ -61,6 +61,13 @@ listAllWithdrawals() {
   })
   return `Withdrawals: ${withdrawal.join(",")}`
 }
-
-const myAccount = new BankAccount()
 }
+const myAccount = new BankAccount();
+console.log(myAccount.deposit(5000));
+console.log(myAccount.withdraw(4000));
+console.log(myAccount.withdraw(4000));
+console.log(myAccount.deposit(70000));
+console.log(myAccount.checkBalance());
+console.log(myAccount.withdraw(300));
+console.log(myAccount.deposit(700));
+
